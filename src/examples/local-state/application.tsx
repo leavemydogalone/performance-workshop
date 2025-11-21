@@ -24,8 +24,8 @@ function Application() {
         </h1>
         <p className="text-slate-600 dark:text-slate-400">
           Open your browser console and interact with any widget. Notice how ALL three widgets
-          re-render even though they&apos;re completely independent? That&apos;s because their state is
-          lifted to the parent.
+          re-render even though they&apos;re completely independent? That&apos;s because their state
+          is lifted to the parent.
         </p>
         <div className="mt-4 rounded-md bg-red-50 p-4 dark:bg-red-900/20">
           <p className="text-sm font-medium text-red-800 dark:text-red-200">
@@ -35,22 +35,11 @@ function Application() {
       </section>
 
       <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <CounterWidgetWrong
-          count={count}
-          onIncrement={incrementCount}
-          onDecrement={decrementCount}
-          onReset={resetCount}
-        />
+        <CounterWidgetWrong />
 
-        <TextWidgetWrong
-          text={text}
-          onTextChange={setText}
-        />
+        <TextWidgetWrong text={text} onTextChange={setText} />
 
-        <ColorWidgetWrong
-          color={color}
-          onColorChange={setColor}
-        />
+        <ColorWidgetWrong color={color} onColorChange={setColor} />
       </section>
 
       <section className="rounded-md bg-slate-100 p-6 dark:bg-slate-800">
