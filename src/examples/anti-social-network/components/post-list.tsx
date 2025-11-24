@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { PostItem } from './post-item';
 import { EmptyState } from '$components/empty-state';
 import type { OptimisticPost } from '../types';
@@ -7,13 +8,10 @@ interface PostListProps {
   onDeletePost: (id: number) => void;
 }
 
-export function PostList({ posts, onDeletePost }: PostListProps) {
+function PostListComponent({ posts, onDeletePost }: PostListProps) {
   if (posts.length === 0) {
     return (
-      <EmptyState
-        title="No posts yet"
-        description="Create your first post using the form above."
-      />
+      <EmptyState title="No posts yet" description="Create your first post using the form above." />
     );
   }
 
@@ -30,3 +28,6 @@ export function PostList({ posts, onDeletePost }: PostListProps) {
     </div>
   );
 }
+
+export const PostList = memo(PostListComponent);
+PostList.displayName = 'PostList';

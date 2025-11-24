@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Card, CardContent } from '$components/card';
 import { Button } from '$components/button';
 import type { OptimisticPost } from '../types';
@@ -7,7 +8,7 @@ interface PostItemProps {
   onDelete: (id: number) => void;
 }
 
-export function PostItem({ post, onDelete }: PostItemProps) {
+function PostItemComponent({ post, onDelete }: PostItemProps) {
   return (
     <Card className={`transition-opacity ${post.isPending ? 'opacity-50' : 'opacity-100'}`}>
       <CardContent className="p-6">
@@ -18,14 +19,10 @@ export function PostItem({ post, onDelete }: PostItemProps) {
                 {post.title}
               </h3>
               {post.isPending && (
-                <span className="text-xs text-slate-500 dark:text-slate-400 italic">
-                  Saving...
-                </span>
+                <span className="text-xs text-slate-500 italic dark:text-slate-400">Saving...</span>
               )}
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              {post.body}
-            </p>
+            <p className="text-sm text-slate-600 dark:text-slate-400">{post.body}</p>
             <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-500">
               <span>Post #{post.id}</span>
               <span>•</span>
@@ -45,3 +42,6 @@ export function PostItem({ post, onDelete }: PostItemProps) {
     </Card>
   );
 }
+
+export const PostItem = memo(PostItemComponent);
+PostItem.displayName = 'PostItem';
